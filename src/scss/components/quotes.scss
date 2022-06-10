@@ -1,0 +1,40 @@
+.quotes {
+	color: rgb(218, 216, 216);
+
+	&__container {
+		display: grid;
+		grid-template-columns: 1fr 2rem;
+		padding: 1rem;
+		gap: 0.4rem 1rem;
+		grid-template-areas:
+			'quote button'
+			'author .';
+
+		&__quote {
+			grid-area: quote;
+			font-size: clamp(12px, 10px + 1vw, 18px);
+			line-height: 22px;
+			font-weight: 300;
+		}
+
+		&__author {
+			grid-area: author;
+			font-size: clamp(12px, 10px + 1vw, 18px);
+			font-weight: 700;
+		}
+
+		&__buttonContainer {
+			grid-area: button;
+
+			&__button {
+				background-color: transparent;
+				border: none;
+				cursor: pointer;
+
+				img {
+					max-width: 100%;
+				}
+			}
+		}
+	}
+}

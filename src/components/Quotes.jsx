@@ -25,9 +25,14 @@ const Quotes = () => {
 			<div className='quotes__container'>
 				<div className='quotes__container__quote'>{quote && quote.quote}</div>
 				<div className='quotes__container__author'>{quote && quote.author}</div>
-				<button onClick={getRandomQuote} className='quotes__container__button'>
-					<img src={RefreshIcon} alt='' />
-				</button>
+				<div className='quotes__container__buttonContainer'>
+					<button
+						onClick={getRandomQuote}
+						className='quotes__container__buttonContainer__button'
+					>
+						<img src={RefreshIcon} alt='' />
+					</button>
+				</div>
 			</div>
 		</section>
 	)
