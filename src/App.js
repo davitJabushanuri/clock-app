@@ -1,11 +1,10 @@
 import React, { useState, useEffect } from 'react'
+import Quotes from './components/Quotes'
 import './scss/main.scss'
 
 function App() {
 	const [geolocation, setGeolocation] = useState({})
-
-	const randomQuoteApi =
-		'https://programming-quotes-api.herokuapp.com/Quotes/random'
+	const [time, setTime] = useState()
 
 	const worldTimeApi = 'https://worldtimeapi.org/api/timezone/Asia/Tbilisi'
 
@@ -18,13 +17,31 @@ function App() {
 		const data = await res.json()
 		setGeolocation(data.data)
 	}
-	console.log(geolocation)
+
+	const fetchWorldTime = async url => {
+		const res = await fetch(url)
+		const data = await res.json()
+		const date = new Date(data.unixtime * 1000)
+		var hours = date.getHours()
+		var minutes = '0' + date.getMinutes()
+		var formattedTime = hours + ':' + minutes.substr(-2)
+		setTime(formattedTime)
+		console.log(formattedTime)
+	}
 
 	useEffect(() => {
 		fetchGeolocation(geolocationApi)
-	}, [])
+	}, [geolocationApi])
 
-	return <div className='App'></div>
+	useEffect(() => {
+		fetchWorldTime('http://worldtimeapi.org/api/ip')
+	}, [geolocation])
+
+	return (
+		<div className='App'>
+			<Quotes />
+		</div>
+	)
 }
 
 export default App
