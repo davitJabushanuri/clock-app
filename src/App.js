@@ -9,6 +9,7 @@ import tabletDayBackground from './assets/tablet/bg-image-daytime.jpg'
 import tabletNightBackground from './assets/tablet/bg-image-nighttime.jpg'
 import desktopDayBackground from './assets/desktop/bg-image-daytime.jpg'
 import desktopNightBackground from './assets/desktop/bg-image-nighttime.jpg'
+import Time from './components/Time'
 
 function App() {
 	const [geolocation, setGeolocation] = useState({})
@@ -58,6 +59,8 @@ function App() {
 		}
 	}
 
+	console.log(geolocation)
+
 	useEffect(() => {
 		fetchGeolocation(geolocationApi)
 		fetchWorldTime(worldTimeApi)
@@ -75,6 +78,12 @@ function App() {
 			}}
 		>
 			<Quotes />
+			<Time
+				greeting={greeting}
+				time={time}
+				geolocation={geolocation}
+				isDay={isDay}
+			/>
 		</div>
 	)
 }

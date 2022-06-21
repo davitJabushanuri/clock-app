@@ -5,4 +5,8 @@
 	background-color: rgb(160, 160, 160);
 	min-height: 100vh;
 	background-blend-mode: multiply;
+
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
 }
