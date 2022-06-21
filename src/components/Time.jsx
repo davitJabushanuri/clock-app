@@ -4,9 +4,14 @@ import nightIcon from '../assets/desktop/icon-moon.svg'
 import downArrow from '../assets/desktop/icon-arrow-down.svg'
 import upArrow from '../assets/desktop/icon-arrow-up.svg'
 
-const Time = ({ greeting, time, geolocation, isDay }) => {
-	console.log(geolocation)
-
+const Time = ({
+	greeting,
+	time,
+	geolocation,
+	isDay,
+	setDropDown,
+	dropDown,
+}) => {
 	return (
 		<section className='time'>
 			<div className='time__greeting'>
@@ -33,10 +38,17 @@ const Time = ({ greeting, time, geolocation, isDay }) => {
 			</div>
 
 			<div className='time__dropdown'>
-				<button className='time__dropdown__button'>
+				<button
+					onClick={() => setDropDown(prev => !prev)}
+					className='time__dropdown__button'
+				>
 					<span>MORE</span>
 					<div className='time__dropdown__button__image'>
-						<img src={downArrow} alt='' />
+						<img
+							style={{ transform: dropDown ? 'rotate(180deg)' : null }}
+							src={downArrow}
+							alt=''
+						/>
 					</div>
 				</button>
 			</div>
